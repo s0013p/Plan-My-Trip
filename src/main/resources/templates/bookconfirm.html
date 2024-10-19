@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        /* Add your CSS styles */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .details {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Confirmation!!!</h1>
+    <div class="details">
+        <p><strong>Trip ID:</strong> <span th:text="${tripEntity.tripId}"></span></p>
+        <p><strong>Username:</strong> <span th:text="${tripEntity.userName}"></span></p> 
+        <p><strong>Contact:</strong> <span th:text="${tripEntity.contact}"></span></p>
+        <p><strong>From:</strong> <span th:text="${tripEntity.start}"></span></p> 
+        <p><strong>Destination:</strong> <span th:text="${tripEntity.destination}"></span></p>
+        <p><strong>Departure:</strong> <span th:text="${tripEntity.depart}"></span></p>
+        <p><strong>Return:</strong> <span th:text="${tripEntity.returndate}"></span></p>
+        <p><strong>Amount:</strong> <span th:text="${tripEntity.amount}"></span></p>
+    </div>
+    
+    <a th:href="@{/book}">
+        <button class="back-button">Book Another Trip</button>
+    </a>
+</body>
+</html>

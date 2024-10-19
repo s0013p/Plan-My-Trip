@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Trip Details</title>
+    <style>
+    	*{
+    	font-family: 'Times New Roman', Times, serif;
+    	}
+    
+        form {
+            width: 30%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"] {
+            padding: 8px 0 8px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+		    height: 35px;
+		    width: 100%;
+		    background-color: #6EC207;
+		    color: white;
+		    border: none;
+		    cursor: pointer;
+		    font-size: 16px;
+		    border-radius: 3px;
+		    margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Trip Details</h1>
+    <form th:action="@{/update/{tripId}(tripId=${tripEntity.tripId})}" method="post">
+        <label for="userName">Username:</label>
+        <input type="text" id="userName" name="userName" th:value="${tripEntity.userName}" required>
+
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" th:value="${tripEntity.contact}" required>
+
+        <label for="start">From:</label>
+        <input type="text" id="start" name="start" th:value="${tripEntity.start}" required>
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" th:value="${tripEntity.destination}" required>
+
+        <label for="depart">Departure Date:</label>
+        <input type="date" id="depart" name="depart" th:value="${tripEntity.depart}" required>
+
+        <label for="returndate">Return Date:</label>
+        <input type="date" id="returndate" name="returndate" th:value="${tripEntity.returndate}" required>
+
+        <label for="amount">Price:</label>
+        <input type="number" id="amount" name="amount" th:value="${tripEntity.amount}" required>
+
+        <button type="submit" class="submit-button">Update Trip</button>
+    </form>
+</body>
+</html>

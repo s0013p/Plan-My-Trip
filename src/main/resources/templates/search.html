@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Details</title>
+     <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: green;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background-color: white;
+            border-radius: 10px;
+            display: inline-block;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .details p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #6EC207;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Trip Details</h1>
+    
+    <div class="details">
+        <p><strong>Trip ID:</strong> <span th:text="${tripEntity.tripId}"></span></p>
+        <p><strong>Username:</strong><span th:text="${tripEntity.userName}"></span> </p>
+        <p><strong>Contact:</strong> <span th:text="${tripEntity.contact}"></span></p>
+        <p><strong>From:</strong><span th:text="${tripEntity.start}"></span> </p>
+        <p><strong>Destination:</strong> <span th:text="${tripEntity.destination}"></span></p>
+        <p><strong>Departure Date:</strong><span th:text="${tripEntity.depart}"></span> </p>
+        <p><strong>Return Date:</strong><span th:text="${tripEntity.returndate}"></span> </p>
+        <p><strong>Amount Paid:</strong><span th:text="${tripEntity.amount}"></span></p>
+    </div>
+    
+    <footer>
+        <a href="/">
+            <button class="back-button">Go to Homepage</button>
+        </a>
+	    <a th:href="@{/book}">
+	        <button class="back-button">Book Another Trip</button>
+	    </a>
+    </footer>
+</body>
+</html>

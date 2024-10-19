@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Trip</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    position: relative;
+    top: 20px;
+    left: 30px;
+    color: rgb(229, 9, 20);
+}
+
+form {
+    border: 2px solid #918e8e;
+    display: inline-block;
+    position: relative;
+    top: 40px;
+    left: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #f9f9f9;
+}
+
+
+
+input {
+    font-size: 15px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+input[type="date"] {
+    width: 50%;
+    
+}
+
+button {
+	
+    height: 35px;
+    width: 100%;
+    background-color: #6EC207;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 10px;
+    text-decoration:none;
+}
+
+form strong {
+    font-size: 20px;
+}
+
+#homepage{
+	position:relative;
+	top :50px;
+	left:30px;
+	text-decoration:none;
+	cursor: pointer;
+	font-size:17px;
+	color:#0000EE;
+}
+
+#homepage:hover{
+	color:#551A8B;
+}
+
+
+</style>
+</head>
+<body>
+
+    <h1>Book Your Trip</h1>
+    <form action="/book" method="post" th:object="${tripEntity}">
+    
+    	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+
+        <label for="username"><strong>Username :</strong></label>
+        <input type="text" id="username" placeholder="Enter username" required th:name="userName"><br><br>
+
+        <label for="contact"><strong>Contact :</strong></label>
+        <input type="text" id="contact" placeholder="Enter your contact"  th:name="contact"required><br><br>
+
+        <label for="from"><strong>From :</strong></label>
+        <input type="text" id="from" placeholder="Enter starting location" th:name="start" required><br><br>
+
+        <label for="destination"><strong>Destination :</strong></label>
+        <input type="text" id="destination" placeholder="Enter destination" th:name="destination" required><br><br>
+
+        <label for="departure"><strong>Departure :</strong></label>
+        <input type="date" id="departure" th:name="depart" required><br><br>
+
+        <label for="return"><strong>Return :</strong></label>
+        <input type="date" id="return" th:name="returndate" required><br><br>
+
+        <label for="amount"><strong>Amount :</strong></label>
+        <input type="text" id="amount" placeholder="Enter amount" th:name="amount" required><br><br>
+
+        
+        <a th:href="@{/bookconfirm}">
+		    <button type="submit" id="confirm"><strong>Confirm Your Trip</strong></button>
+		</a>
+    </form>
+ 	<div>
+ 		<a href="/" id="homepage"> >> Go to Homepage  </a>
+ 	</div>   
+ 
+    
+
+
+</body>
+</html>

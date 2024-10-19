@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    height: 70px;
+}
+
+h1 {
+    margin-left: 20px;
+    color: rgb(229, 9, 20);
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+form {
+    display: flex;
+    gap: 0px;
+    position: relative;
+    top: 3.5px;
+}
+
+input {
+    padding: 5px;
+    padding-right: 800px;
+    width: 300px;
+    border: 1px solid #ccc;
+
+}
+
+#search {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#profile{
+    padding: 7px 13px 7px 13px;
+    background-color: #fb641b;
+    margin-right: 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    top: 3.5px;
+}
+
+#profile:hover {
+    background-color: #6EC207;
+}
+
+div{
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+figure {
+    display: inline-block;
+    text-align: center;  
+    margin: 10px;
+}
+
+img{
+    height: 230px;
+    width: 330px;
+    border-radius: 10px;    
+}
+
+figcaption{
+    font-size: 16px;
+    font-weight: bold;
+    color: #1F316F;
+}
+
+footer
+{
+    position: relative;
+    top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#book{
+    background-color: #fb641b;
+    color: white;
+    height: 40px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+#book:hover {
+    background-color: #6EC207;
+}
+
+</style>
+</head>
+
+<body>
+    <header id="header">
+        <h1>PlanMyTrip</h1>
+
+        <form action="/search" method="get">
+	    	<input type="text" name="tripId" placeholder="Enter trip ID to search your trip" required>
+	    	<button type="submit" id="search">Search</button>
+		</form>
+		
+        <a th:href="@{/profile}" class="button-link">
+        	<button type="submit" id="profile">Profile</button>  
+        </a> 
+    </header>
+    <div>
+        <figure>
+            <img th:src="@{/images/manali.jpg}"  alt="Image not found">
+            <figcaption>Manali</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/kerala.jpg}"  alt="Image not found">
+            <figcaption>Kerala</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/rajsthan.jpg}"  alt="Image not found">
+            <figcaption>Rajsthan</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/goa.jpg}"  alt="Image not found">
+            <figcaption>Goa</figcaption>
+        </figure>
+    </div> 
+    <div>
+        <figure>
+            <img th:src="@{/images/delhi.jpg}"  alt="Image not found">
+            <figcaption>Delhi</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/mumbai.jpg}"  alt="Image not found">
+            <figcaption>Mumbai</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/agra.jpg}"  alt="Image not found">
+            <figcaption>Agra</figcaption>
+        </figure>
+        <figure>
+            <img th:src="@{/images/ladakh.jpg}"  alt="Image not found">
+            <figcaption>Ladakh</figcaption>
+        </figure>
+    </div> 
+	<footer>
+		<a th:href="@{/book}" class="button-link">
+		    <button type="button" id="book">Book Your Trip</button>
+		</a>
+	</footer>
+
+</body>
+
+</html>

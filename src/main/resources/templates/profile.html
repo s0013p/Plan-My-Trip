@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Details of all trip</title>
+    <style>
+ 		h1{
+ 			text-align: center;
+ 			color: green;
+ 		}   
+
+		div{
+		    margin-left:20px;
+            margin-right:20px;
+		}
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        
+        #button{
+        	text-align: center;
+		
+        }
+        
+        button{
+            color:white;
+        	border:none;
+        	width:70px;
+        	height:25px;
+        	border-radius :5px;
+        }
+        
+        #edit{
+        	background-color:#007bff;
+        	cursor:pointer;
+        	
+        }
+        
+        #delete{
+        	background-color:rgb(229, 9, 20);
+        	cursor:pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Details of All Trips</h1>
+    <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Trip ID</th>
+                <th>Username</th>
+                <th>Contact</th>
+                <th>From</th>
+                <th>Destination</th>
+                <th>Departure</th>
+                <th>Return Date</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+            <tr th:each="tripEntity : ${tripEntity}">
+                <td th:text="${tripEntity.tripId}">Trip ID</td>
+                <td th:text="${tripEntity.userName}">Username</td>
+                <td th:text="${tripEntity.contact}">Contact</td>
+                <td th:text="${tripEntity.start}">From</td>
+                <td th:text="${tripEntity.destination}">Destination</td>
+                <td th:text="${tripEntity.depart}">Departure</td>
+                <td th:text="${tripEntity.returndate}">Return Date</td>
+                <td th:text="${tripEntity.amount}">Amount</td>  
+
+                    <td id="button">
+                        <a th:href="@{/update/{tripId}(tripId=${tripEntity.tripId})}">
+                            <button id="edit"><strong>Edit</strong></button>
+                        </a>
+                    </td>
+
+				                    <!-- Delete Button -->
+				<td id="button">
+				    <form action="/delete" method="post" style="display: inline;">
+					    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />			    
+				        <input type="hidden" name="tripId" th:value="${tripEntity.tripId}"/>
+				        <button type="submit" id="delete"><strong>Delete</strong></button>
+				    </form>
+				</td>
+           
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
